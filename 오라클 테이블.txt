@@ -1,0 +1,84 @@
+(1) MP_BOARD
+CREATE TABLE MP_BOARD(
+    BNO NUMBER NOT NULL, 
+    TITLE VARCHAR2(100)     NOT NULL, 
+    CONTENT VARCHAR2(2000)  NOT NULL, 
+    WRITER VARCHAR2(100)    NOT NULL,
+    REGDATE DATE            DEFAULT SYSDATE,
+    HIT NUMBER DEFAULT 0,
+    PRIMARY KEY(BNO)
+);
+
+CREATE SEQUENCE MP_BOARD_SEQ
+START WITH 1
+INCREMENT BY 1;
+-----------------------------------------------------------------------------------------------------------------------------------------------
+(2) MP_REPLY
+create table mp_reply (
+    bno number not null,
+    rno number not null,
+    content varchar2(1000) not null,
+    writer varchar2(50) not null,
+    regdate date default sysdate,
+    primary key(bno, rno)
+);
+
+alter table mp_reply add constraint mp_reply_bno foreign key(bno)
+references mp_board(bno);
+
+create sequence mp_reply_seq START WITH 1 MINVALUE 0;
+
+commit;
+
+insert into mp_reply(bno, rno, content, writer)
+    values(418, mp_reply_seq.nextval, '테스트댓글', '테스트 작성자');
+
+select rno, content, writer, regdate
+  from mp_reply
+ where bno = 418;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+(3) MP_MEMBER
+CREATE TABLE MP_MEMBER(
+    USERID VARCHAR2(40)     NOT NULL,
+    USERPASS VARCHAR2(100)  NOT NULL,
+    USERNAME VARCHAR2(40)    NOT NULL,
+    REGDATE DATE            DEFAULT SYSDATE,
+    EMAIL VARCHAR(50) NOT NULL,
+    NNAME VARCHAR(20) NOT NULL,
+    ADDRESS VARCHAR(200) NOT NULL,
+    ADDRESS2 VARCHAR(200) NOT NULL,
+    ADDRESS3 VARCHAR(200) NOT NULL,
+    ADDRESS4 VARCHAR(200) NOT NULL,
+    SNUM NUMBER NOT NULL,
+    PNUM NUMBER NOT NULL,
+    GRADE VARCHAR(10) NOT NULL,
+    PRIMARY KEY(USERID)
+);
+-----------------------------------------------------------------------------------------------------------------------------------------------
+(4) MP_FILE
+CREATE TABLE MP_FILE
+(
+    FILE_NO NUMBER,                        
+    BNO NUMBER NOT NULL,                    
+    ORG_FILE_NAME VARCHAR2(260) NOT NULL,   
+    STORED_FILE_NAME VARCHAR2(36) NOT NULL,
+    FILE_SIZE NUMBER,                       
+    REGDATE DATE DEFAULT SYSDATE NOT NULL,  
+    DEL_GB VARCHAR2(1) DEFAULT 'N' NOT NULL,
+    PRIMARY KEY(FILE_NO)                   
+);
+COMMIT;
+
+CREATE SEQUENCE SEQ_MP_FILE_NO
+START WITH 1 
+INCREMENT BY 1 
+NOMAXVALUE NOCACHE;
+
+COMMIT;
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
