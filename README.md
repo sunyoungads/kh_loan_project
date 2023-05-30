@@ -29,3 +29,6 @@ EXERD
 글작성 화면
 
 ![image](https://github.com/sunyoungads/kh_loan_project/assets/117277093/b4246a2a-aa46-419d-b1f5-6045ab3a3b26)
+
+오라클 DB
+[오라클 테이블.txt](https://github.com/sunyoungads/kh_loan_project/files/11597588/default.txt)
