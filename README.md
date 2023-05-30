@@ -1,6 +1,6 @@
 # kh_loan_project
 [개발마스터]프로젝트
-![image](https://github.com/sunyoungads/kh_loan_project/assets/117277093/582a65a8-89db-49c3-95b2-7c8d853b054e)
+![image](https://github.com/sunyoungads/kh_loan_project/assets/117277093/f3dccfba-942e-455f-8b1d-940dcf9796d3)
 
 
 EXERD
